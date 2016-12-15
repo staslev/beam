@@ -269,5 +269,11 @@
         <artifactId>google-cloud-dataflow-java-proto-library-all</artifactId>
         <scope>test</scope>
     </dependency>
+
+    <dependency>
+      <groupId>com.google.http-client</groupId>
+      <artifactId>google-http-client</artifactId>
+    </dependency>
+
   </dependencies>
 </project>

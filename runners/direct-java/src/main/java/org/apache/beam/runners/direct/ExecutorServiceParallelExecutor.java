@@ -19,6 +19,8 @@ package org.apache.beam.runners.direct;
 
 import static com.google.common.base.Preconditions.checkState;
 
+import com.google.api.client.util.BackOff;
+import com.google.api.client.util.Sleeper;
 import com.google.auto.value.AutoValue;
 import com.google.common.base.MoreObjects;
 import com.google.common.base.Optional;
@@ -50,12 +52,14 @@ import org.apache.beam.runners.direct.WatermarkManager.FiredTimers;
 import org.apache.beam.sdk.Pipeline;
 import org.apache.beam.sdk.transforms.AppliedPTransform;
 import org.apache.beam.sdk.transforms.PTransform;
+import org.apache.beam.sdk.util.FluentBackoff;
 import org.apache.beam.sdk.util.TimerInternals.TimerData;
 import org.apache.beam.sdk.util.UserCodeException;
 import org.apache.beam.sdk.util.WindowedValue;
 import org.apache.beam.sdk.values.PCollection;
 import org.apache.beam.sdk.values.PCollectionView;
 import org.apache.beam.sdk.values.PValue;
+import org.joda.time.Duration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -180,7 +184,8 @@ final class ExecutorServiceParallelExecutor implements PipelineExecutor {
       pendingRootBundles.put(root, pending);
     }
     evaluationContext.initialize(pendingRootBundles);
-    Runnable monitorRunnable = new MonitorRunnable();
+    Runnable monitorRunnable =
+        new MonitorRunnable(evaluationContext.getPipelineOptions().getNoWorkAddedInitialBackOff());
     executorService.submit(monitorRunnable);
   }
 
@@ -378,6 +383,25 @@ final class ExecutorServiceParallelExecutor implements PipelineExecutor {
         ExecutorServiceParallelExecutor.class.getSimpleName());
 
     private boolean exceptionThrown = false;
+    private final FluentBackoff noWorkAddedBackOffFactory;
+
+    private MonitorRunnable(long noWorkAddedBackOffMilli) {
+      noWorkAddedBackOffFactory =
+          FluentBackoff
+          .DEFAULT
+          .withInitialBackoff(Duration.millis(noWorkAddedBackOffMilli))
+          .withMaxRetries(3);
+    }
+
+    private void addWorkOrBackOff() throws Exception {
+      final BackOff backOff = noWorkAddedBackOffFactory.backoff();
+      long backOffMillis;
+      for (backOffMillis = backOff.nextBackOffMillis();
+           !addWorkIfNecessary() && backOffMillis != BackOff.STOP;
+           backOffMillis = backOff.nextBackOffMillis()) {
+        Sleeper.DEFAULT.sleep(backOffMillis);
+      }
+    }
 
     @Override
     public void run() {
@@ -409,7 +433,8 @@ final class ExecutorServiceParallelExecutor implements PipelineExecutor {
         for (ExecutorUpdate update : updates) {
           applyUpdate(noWorkOutstanding, startingState, update);
         }
-        addWorkIfNecessary();
+
+        addWorkOrBackOff();
       } catch (InterruptedException e) {
         Thread.currentThread().interrupt();
         LOG.error("Monitor died due to being interrupted");
@@ -502,7 +527,8 @@ final class ExecutorServiceParallelExecutor implements PipelineExecutor {
      * add more work from root nodes that may have additional work. This ensures that if a pipeline
      * has elements available from the root nodes it will add those elements when necessary.
      */
-    private void addWorkIfNecessary() {
+    private boolean addWorkIfNecessary() {
+      boolean moreWork = false;
       // If any timers have fired, they will add more work; We don't need to add more
       if (state.get() == ExecutorState.QUIESCENT) {
         // All current TransformExecutors are blocked; add more work from the roots.
@@ -518,9 +544,11 @@ final class ExecutorServiceParallelExecutor implements PipelineExecutor {
           for (CommittedBundle<?> bundle : bundles) {
             scheduleConsumption(pendingRootEntry.getKey(), bundle, defaultCompletionCallback);
             state.set(ExecutorState.ACTIVE);
+            moreWork = true;
           }
         }
       }
+      return moreWork;
     }
   }
 

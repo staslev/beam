@@ -72,6 +72,13 @@ public interface DirectOptions extends PipelineOptions, ApplicationNameOptions {
   int getTargetParallelism();
   void setTargetParallelism(int target);
 
+  @Default.Long(1L)
+  @Description(
+      "Configures the initial back-off (in millis) for the runner in case a the previous attempt "
+          + "to get more work came up empty.")
+  long getNoWorkAddedInitialBackOff();
+  void setNoWorkAddedInitialBackOff(long noWorkAddedInitialBackOff);
+
   /**
    * A {@link DefaultValueFactory} that returns the result of {@link Runtime#availableProcessors()}
    * from the {@link #create(PipelineOptions)} method. Uses {@link Runtime#getRuntime()} to obtain
