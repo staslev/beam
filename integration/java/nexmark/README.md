@@ -151,7 +151,7 @@ Open issues are currently opened on [github](https://github.com/iemejia/beam/iss
 |     0 | Ok     |   #1   | Ok     |        |
 |     1 | Ok     |   #1   | Ok     |        |
 |     2 | Ok     | NEX-01 | Ok     |        |
-|     3 | Ok     | Ok     | Ok     |        |
+|     3 | NEX-07 | NEX-07 | NEX-07 |        |
 |     4 | Ok     | Ok     | NEX-02 |        |
 |     5 | Ok     | NEX-03 | Ok     |        |
 |     6 | Ok     | OK     | NEX-02 |        |
@@ -169,7 +169,7 @@ Open issues are currently opened on [github](https://github.com/iemejia/beam/iss
 |     0 | Ok     |        |        |        |
 |     1 | Ok     |        |        |        |
 |     2 | Ok     |        |        |        |
-|     3 | Ok     |        |        |        |
+|     3 | NEX-07 |        |        |        |
 |     4 | Ok     |        |        |        |
 |     5 | Ok     |        |        |        |
 |     6 | Ok     |        |        |        |
