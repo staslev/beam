@@ -267,7 +267,8 @@ public class Query3 extends NexmarkQuery {
         // Remember this person for any future auctions.
         personState.write(newPerson);
         //set a time out to clear this state
-        Instant firingTime = new Instant(newPerson.dateTime).plus(Duration.standardSeconds(maxAuctionsWaitingTime));
+        Instant firingTime = new Instant(newPerson.dateTime)
+                                  .plus(Duration.standardSeconds(maxAuctionsWaitingTime));
         timer.set(firingTime);
       }
       if (theNewPerson != null) {
