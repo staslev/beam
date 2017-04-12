@@ -36,14 +36,10 @@ import org.junit.experimental.categories.Category;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
-/**
- * Test the various NEXMark queries yield results coherent with their models.
- */
+/** Test the various NEXMark queries yield results coherent with their models. */
 @RunWith(JUnit4.class)
 public class QueryTest {
   private static final NexmarkConfiguration CONFIG = NexmarkConfiguration.DEFAULT.clone();
-  @Rule
-  public TestPipeline p = TestPipeline.create();
 
   static {
     //careful, results of tests are linked to numEvents value
@@ -51,17 +47,19 @@ public class QueryTest {
     CONFIG.numEvents = 100;
   }
 
+  @Rule public TestPipeline p = TestPipeline.create();
+
   /** Test {@code query} matches {@code model}. */
-  private void queryMatchesModel(String name, NexmarkQuery query, NexmarkQueryModel model, boolean streamingMode) {
+  private void queryMatchesModel(
+      String name, NexmarkQuery query, NexmarkQueryModel model, boolean streamingMode) {
     NexmarkUtils.setupPipeline(NexmarkUtils.CoderStrategy.HAND, p);
     PCollection<TimestampedValue<KnownSize>> results;
     if (streamingMode) {
-      results = p.apply(name + ".ReadUnBounded", NexmarkUtils.streamEventsSource(CONFIG)).apply(query);
+      results =
+          p.apply(name + ".ReadUnBounded", NexmarkUtils.streamEventsSource(CONFIG)).apply(query);
       //TODO Ismael this should not be called explicitly
       results.setIsBoundedInternal(PCollection.IsBounded.UNBOUNDED);
-    }
-    else
-    {
+    } else {
       results = p.apply(name + ".ReadBounded", NexmarkUtils.batchEventsSource(CONFIG)).apply(query);
       //TODO Ismael this should not be called explicitly
       results.setIsBoundedInternal(PCollection.IsBounded.BOUNDED);

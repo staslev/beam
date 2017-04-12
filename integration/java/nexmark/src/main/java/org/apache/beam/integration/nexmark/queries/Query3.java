@@ -94,8 +94,12 @@ public class Query3 extends NexmarkQuery {
   private PCollection<NameCityStateId> applyTyped(PCollection<Event> events) {
     int numEventsInPane = 30;
 
-    PCollection<Event> eventsWindowed = events.apply(Window.<Event>into(new GlobalWindows()).triggering(Repeatedly.forever(
-        (AfterPane.elementCountAtLeast(numEventsInPane)))).discardingFiredPanes().withAllowedLateness(Duration.ZERO));
+    PCollection<Event> eventsWindowed =
+        events.apply(
+            Window.<Event>into(new GlobalWindows())
+                .triggering(Repeatedly.forever((AfterPane.elementCountAtLeast(numEventsInPane))))
+                .discardingFiredPanes()
+                .withAllowedLateness(Duration.ZERO));
     PCollection<KV<Long, Auction>> auctionsBySellerId =
         eventsWindowed
             // Only want the new auction events.
