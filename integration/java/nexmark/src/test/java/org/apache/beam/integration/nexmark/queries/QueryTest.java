@@ -74,120 +74,120 @@ public class QueryTest {
   @Test
   @Category(NeedsRunner.class)
   public void query0MatchesModelBatch() {
-    queryMatchesModel("Query0Test", new Query0(CONFIG), new Query0Model(CONFIG), false);
+    queryMatchesModel("Query0TestBatch", new Query0(CONFIG), new Query0Model(CONFIG), false);
   }
 
   @Test
   @Category(NeedsRunner.class)
   public void query0MatchesModelStreaming() {
-    queryMatchesModel("Query0Test", new Query0(CONFIG), new Query0Model(CONFIG), true);
+    queryMatchesModel("Query0TestStreaming", new Query0(CONFIG), new Query0Model(CONFIG), true);
   }
 
   @Test
   @Category(NeedsRunner.class)
   public void query1MatchesModelBatch() {
-    queryMatchesModel("Query1Test", new Query1(CONFIG), new Query1Model(CONFIG), false);
+    queryMatchesModel("Query1TestBatch", new Query1(CONFIG), new Query1Model(CONFIG), false);
   }
 
   @Test
   @Category(NeedsRunner.class)
   public void query1MatchesModelStreaming() {
-    queryMatchesModel("Query1Test", new Query1(CONFIG), new Query1Model(CONFIG), true);
+    queryMatchesModel("Query1TestStreaming", new Query1(CONFIG), new Query1Model(CONFIG), true);
   }
 
   @Test
   @Category(NeedsRunner.class)
   public void query2MatchesModelBatch() {
-    queryMatchesModel("Query2Test", new Query2(CONFIG), new Query2Model(CONFIG), false);
+    queryMatchesModel("Query2TestBatch", new Query2(CONFIG), new Query2Model(CONFIG), false);
   }
 
   @Test
   @Category(NeedsRunner.class)
   public void query2MatchesModelStreaming() {
-    queryMatchesModel("Query2Test", new Query2(CONFIG), new Query2Model(CONFIG), true);
+    queryMatchesModel("Query2TestStreaming", new Query2(CONFIG), new Query2Model(CONFIG), true);
   }
 
   @Test
   @Category({NeedsRunner.class, UsesStatefulParDo.class, UsesTimersInParDo.class})
   public void query3MatchesModelBatch() {
-    queryMatchesModel("Query3Test", new Query3(CONFIG), new Query3Model(CONFIG), false);
+    queryMatchesModel("Query3TestBatch", new Query3(CONFIG), new Query3Model(CONFIG), false);
   }
 
   @Test
   @Category({NeedsRunner.class, UsesStatefulParDo.class, UsesTimersInParDo.class})
   public void query3MatchesModelStreaming() {
-    queryMatchesModel("Query3Test", new Query3(CONFIG), new Query3Model(CONFIG), true);
+    queryMatchesModel("Query3TestStreaming", new Query3(CONFIG), new Query3Model(CONFIG), true);
   }
 
   @Test
   @Category(NeedsRunner.class)
   public void query4MatchesModelBatch() {
-    queryMatchesModel("Query4Test", new Query4(CONFIG), new Query4Model(CONFIG), false);
+    queryMatchesModel("Query4TestBatch", new Query4(CONFIG), new Query4Model(CONFIG), false);
   }
 
   @Test
   @Category(NeedsRunner.class)
   public void query4MatchesModelStreaming() {
-    queryMatchesModel("Query4Test", new Query4(CONFIG), new Query4Model(CONFIG), true);
+    queryMatchesModel("Query4TestStreaming", new Query4(CONFIG), new Query4Model(CONFIG), true);
   }
 
   @Test
   @Category(NeedsRunner.class)
   public void query5MatchesModelBatch() {
-    queryMatchesModel("Query5Test", new Query5(CONFIG), new Query5Model(CONFIG), false);
+    queryMatchesModel("Query5TestBatch", new Query5(CONFIG), new Query5Model(CONFIG), false);
   }
 
   @Test
   @Category(NeedsRunner.class)
   public void query5MatchesModelStreaming() {
-    queryMatchesModel("Query5Test", new Query5(CONFIG), new Query5Model(CONFIG), true);
+    queryMatchesModel("Query5TestStreaming", new Query5(CONFIG), new Query5Model(CONFIG), true);
   }
 
   @Test
   @Category(NeedsRunner.class)
   public void query6MatchesModelBatch() {
-    queryMatchesModel("Query6Test", new Query6(CONFIG), new Query6Model(CONFIG), false);
+    queryMatchesModel("Query6TestBatch", new Query6(CONFIG), new Query6Model(CONFIG), false);
   }
 
   @Test
   @Category(NeedsRunner.class)
   public void query6MatchesModelStreaming() {
-    queryMatchesModel("Query6Test", new Query6(CONFIG), new Query6Model(CONFIG), true);
+    queryMatchesModel("Query6TestStreaming", new Query6(CONFIG), new Query6Model(CONFIG), true);
   }
 
   @Test
   @Category(NeedsRunner.class)
   public void query7MatchesModelBatch() {
-    queryMatchesModel("Query7Test", new Query7(CONFIG), new Query7Model(CONFIG), false);
+    queryMatchesModel("Query7TestBatch", new Query7(CONFIG), new Query7Model(CONFIG), false);
   }
 
   @Test
   @Category(NeedsRunner.class)
   public void query7MatchesModelStreaming() {
-    queryMatchesModel("Query7Test", new Query7(CONFIG), new Query7Model(CONFIG), true);
+    queryMatchesModel("Query7TestStreaming", new Query7(CONFIG), new Query7Model(CONFIG), true);
   }
 
   @Test
   @Category(NeedsRunner.class)
   public void query8MatchesModelBatch() {
-    queryMatchesModel("Query8Test", new Query8(CONFIG), new Query8Model(CONFIG), false);
+    queryMatchesModel("Query8TestBatch", new Query8(CONFIG), new Query8Model(CONFIG), false);
   }
 
   @Test
   @Category(NeedsRunner.class)
   public void query8MatchesModelStreaming() {
-    queryMatchesModel("Query8Test", new Query8(CONFIG), new Query8Model(CONFIG), true);
+    queryMatchesModel("Query8TestStreaming", new Query8(CONFIG), new Query8Model(CONFIG), true);
   }
 
   @Test
   @Category(NeedsRunner.class)
   public void query9MatchesModelBatch() {
-    queryMatchesModel("Query9Test", new Query9(CONFIG), new Query9Model(CONFIG), false);
+    queryMatchesModel("Query9TestBatch", new Query9(CONFIG), new Query9Model(CONFIG), false);
   }
 
   @Test
   @Category(NeedsRunner.class)
   public void query9MatchesModelStreaming() {
-    queryMatchesModel("Query9Test", new Query9(CONFIG), new Query9Model(CONFIG), true);
+    queryMatchesModel("Query9TestStreaming", new Query9(CONFIG), new Query9Model(CONFIG), true);
   }
 }
