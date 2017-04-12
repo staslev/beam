@@ -42,7 +42,8 @@ public class QueryTest {
   private static final NexmarkConfiguration CONFIG = NexmarkConfiguration.DEFAULT.clone();
 
   static {
-    //careful, results of tests are linked to numEvents value
+    // careful, results of tests are linked to numEvents value (for query6)
+    // and to numEventGenerators for timestamps
     CONFIG.numEventGenerators = 1;
     CONFIG.numEvents = 100;
   }
