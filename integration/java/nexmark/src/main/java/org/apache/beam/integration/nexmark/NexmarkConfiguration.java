@@ -106,7 +106,7 @@ public class NexmarkConfiguration implements Serializable {
   public int preloadSeconds = 0;
 
   /**
-   * Timeout for stream pipelines to stop in seconds
+   * Timeout for stream pipelines to stop in seconds.
    */
   @JsonProperty
   public int streamTimeout = 30;
@@ -549,13 +549,44 @@ public class NexmarkConfiguration implements Serializable {
 
   @Override
   public int hashCode() {
-    return Objects.hash(debug, query, sourceType, sinkType, pubSubMode,
-        numEvents, numEventGenerators, rateShape, firstEventRate, nextEventRate, rateUnit,
-        ratePeriodSec, preloadSeconds, streamTimeout, isRateLimited, useWallclockEventTime, avgPersonByteSize,
-        avgAuctionByteSize, avgBidByteSize, hotAuctionRatio, hotSellersRatio, hotBiddersRatio,
-        windowSizeSec, windowPeriodSec, watermarkHoldbackSec, numInFlightAuctions, numActivePeople,
-        coderStrategy, cpuDelayMs, diskBusyBytes, auctionSkip, fanout, maxAuctionsWaitingTime,
-        occasionalDelaySec, probDelayedEvent, maxLogEvents, usePubsubPublishTime,
+    return Objects.hash(
+        debug,
+        query,
+        sourceType,
+        sinkType,
+        pubSubMode,
+        numEvents,
+        numEventGenerators,
+        rateShape,
+        firstEventRate,
+        nextEventRate,
+        rateUnit,
+        ratePeriodSec,
+        preloadSeconds,
+        streamTimeout,
+        isRateLimited,
+        useWallclockEventTime,
+        avgPersonByteSize,
+        avgAuctionByteSize,
+        avgBidByteSize,
+        hotAuctionRatio,
+        hotSellersRatio,
+        hotBiddersRatio,
+        windowSizeSec,
+        windowPeriodSec,
+        watermarkHoldbackSec,
+        numInFlightAuctions,
+        numActivePeople,
+        coderStrategy,
+        cpuDelayMs,
+        diskBusyBytes,
+        auctionSkip,
+        fanout,
+        maxAuctionsWaitingTime,
+        occasionalDelaySec,
+        probDelayedEvent,
+        maxLogEvents,
+        usePubsubPublishTime,
         outOfOrderGroupSize);
   }
 
