@@ -109,7 +109,7 @@ public class NexmarkConfiguration implements Serializable {
    * Timeout for stream pipelines to stop in seconds.
    */
   @JsonProperty
-  public int streamTimeout = 30;
+  public int streamTimeout = 240;
 
   /**
    * If true, and in streaming mode, generate events only when they are due according to their
