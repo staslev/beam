@@ -172,14 +172,14 @@ Open issues are tracked [here](https://github.com../../../../../issues):
 |     0 | ok                             | ok                             | ok                             | ok                              |
 |     1 | ok                             | ok                             | ok                             | ok                              |
 |     2 | ok                             | ok                             | ok                             | ok                              |
-|     3 | [#7](../../../../../issues/7)  | [#7](../../../../../issues/7)  | [#7](../../../../../issues/7)  | [#7](../../../../../issues/7)   |
+|     3 | ok                             | [#7](../../../../../issues/7)  | [#7](../../../../../issues/7)  | [#7](../../../../../issues/7)   |
 |     4 | ok                             | ok                             | [#2](../../../../../issues/2)  | ok                              |
 |     5 | ok                             | ok                             | ok                             | ok                              |
 |     6 | ok                             | ok                             | [#2](../../../../../issues/2)  | ok                              |
 |     7 | ok                             | ok                             | ok                             | [#24](../../../../../issues/24) |
 |     8 | ok                             | ok                             | ok                             | ok                              |
 |     9 | ok                             | ok                             | [#2](../../../../../issues/2)  | ok                              |
-|    10 | [#5](../../../../../issues/5)  | ok                             | ok                             | ok                              |
+|    10 | ok                             | ok                             | ok                             | ok                              |
 |    11 | ok                             | ok                             | ok                             | ok                              |
 |    12 | ok                             | ok                             | ok                             | ok                              |
 
@@ -187,19 +187,19 @@ Open issues are tracked [here](https://github.com../../../../../issues):
 
 | Query | Direct                         | Spark                          | Flink                          | Apex                           |
 | ----: | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ |
-|     0 | ok                             |                                |                                | ok                             |
-|     1 | ok                             |                                |                                | ok                             |
-|     2 | ok                             |                                |                                | ok                             |
-|     3 | [#7](../../../../../issues/7)  |                                |                                | [#7](../../../../../issues/7)  |
-|     4 | ok                             |                                |                                | ok                             |
-|     5 | ok                             |                                |                                | ok                             |
-|     6 | ok                             |                                |                                | ok                             |
-|     7 | ok                             |                                |                                | ?                              |
-|     8 | ok                             |                                |                                | ok                             |
-|     9 | ok                             |                                |                                | ok                             |
-|    10 | [#5](../../../../../issues/5)  |                                |                                | ?                              |
-|    11 | ok                             |                                |                                | Ok                             |
-|    12 | ok                             |                                |                                | Ok                             |
+|     0 | ok                             | ok                             |                                | ok                             |
+|     1 | ok                             | ok                             |                                | ok                             |
+|     2 | ok                             | ok                             |                                | ok                             |
+|     3 | ok                             | [#7](../../../../../issues/7)  |                                | [#7](../../../../../issues/7)  |
+|     4 | ok                             | [#41](../../../../../issues/41)|                                | ok                             |
+|     5 | ok                             | [#42](../../../../../issues/42)|                                | ok                             |
+|     6 | ok                             | ok                             |                                | ok                             |
+|     7 | ok                             | [#43](../../../../../issues/43)|                                | ?                              |
+|     8 | ok                             | ok                             |                                | ok                             |
+|     9 | ok                             | ok                             |                                | ok                             |
+|    10 | ok                             | ok                             |                                | ?                              |
+|    11 | ok                             | ok                             |                                | Ok                             |
+|    12 | ok                             | ok                             |                                | Ok                             |
 
 ## Batch / Synthetic / Cluster
 
