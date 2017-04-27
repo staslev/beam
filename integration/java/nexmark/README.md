@@ -185,8 +185,7 @@ Open issues are tracked [here](https://github.com../../../../../issues):
 
 ## Streaming / Synthetic / Local
 
-| Query | Direct                         | Spark                          | Flink (streaming pipeline      | Apex                           |
-|       |                                |                                | termination issue BEAM-593)    |                                |
+| Query | Direct                         | Spark                          | Flink  BEAM 593                | Apex                           |
 | ----: | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ |
 |     0 | ok                             | ok                             |                                | ok                             |
 |     1 | ok                             | ok                             |                                | ok                             |
