@@ -37,7 +37,7 @@ The queries exercise many aspects of dataflow model on Beam:
 * **Query2**: What are the auctions with particular auction numbers?
   Illustrates a simple filter.
 * **Query3**: Who is selling in particular US states?
-  Illustrates an incremental join (using per-key state) and filter.
+  Illustrates an incremental join (using per-key state and timer) and filter.
 * **Query4**: What is the average selling price for each auction
   category?
   Illustrates complex join (using custom window functions) and
@@ -125,7 +125,7 @@ Run query N
 - STRESS: Like smoke but for 1m events.
 - FULL_THROTTLE: Like SMOKE but 100m events.
 
-        --suite=SMOKE
+   
 
 ### Apex specific configuration
 
@@ -133,7 +133,7 @@ Run query N
 
 ### Dataflow specific configuration
 
-    --query=0 --suite=SMOKE --manageResources=false --monitorJobs=true \
+    --suite=SMOKE --manageResources=false --monitorJobs=true \
     --enforceEncodability=false --enforceImmutability=false
     --project=<your project> \
     --zone=<your zone> \
@@ -153,7 +153,7 @@ Run query N
 ### Flink specific configuration
 
     --suite=SMOKE --manageResources=false --monitorJobs=true \
-    --flinkMaster=[local] --parallelism=#numcores
+    --flinkMaster=local --parallelism=#numcores
 
 ### Spark specific configuration
 
@@ -172,34 +172,35 @@ Open issues are tracked [here](https://github.com../../../../../issues):
 |     0 | ok                             | ok                             | ok                             | ok                              |
 |     1 | ok                             | ok                             | ok                             | ok                              |
 |     2 | ok                             | ok                             | ok                             | ok                              |
-|     3 | ok                             | [#7](../../../../../issues/7)  | [#7](../../../../../issues/7)  | [#7](../../../../../issues/7)   |
-|     4 | ok                             | ok                             | [#2](../../../../../issues/2)  | ok                              |
+|     3 | ok                             | [#44](../../../../../issues/44)| ok                             | [#50](../../../../../issues/50) |
+|     4 | ok                             | ok                             | ok                             | ok                              |
 |     5 | ok                             | ok                             | ok                             | ok                              |
-|     6 | ok                             | ok                             | [#2](../../../../../issues/2)  | ok                              |
-|     7 | ok                             | ok                             | ok                             | [#24](../../../../../issues/24) |
+|     6 | ok                             | ok                             | ok                             | ok                              |
+|     7 | ok                             | ok                             | ok                             | ok                              |
 |     8 | ok                             | ok                             | ok                             | ok                              |
-|     9 | ok                             | ok                             | [#2](../../../../../issues/2)  | ok                              |
+|     9 | ok                             | ok                             | ok                             | ok                              |
 |    10 | ok                             | ok                             | ok                             | ok                              |
 |    11 | ok                             | ok                             | ok                             | ok                              |
 |    12 | ok                             | ok                             | ok                             | ok                              |
 
 ## Streaming / Synthetic / Local
 
-| Query | Direct                         | Spark                          | Flink                          | Apex                           |
+| Query | Direct                         | Spark                          | Flink (streaming pipeline      | Apex                           |
+|       |                                |                                | termination issue BEAM-593)    |                                |
 | ----: | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ |
 |     0 | ok                             | ok                             |                                | ok                             |
 |     1 | ok                             | ok                             |                                | ok                             |
 |     2 | ok                             | ok                             |                                | ok                             |
-|     3 | ok                             | [#7](../../../../../issues/7)  |                                | [#7](../../../../../issues/7)  |
+|     3 | ok                             | [#44](../../../../../issues/44)|                                | [#50](../../../../../issues/50)|
 |     4 | ok                             | [#41](../../../../../issues/41)|                                | ok                             |
 |     5 | ok                             | [#42](../../../../../issues/42)|                                | ok                             |
 |     6 | ok                             | ok                             |                                | ok                             |
-|     7 | ok                             | [#43](../../../../../issues/43)|                                | ?                              |
+|     7 | ok                             | [#43](../../../../../issues/43)|                                | ok                             |
 |     8 | ok                             | ok                             |                                | ok                             |
 |     9 | ok                             | ok                             |                                | ok                             |
-|    10 | ok                             | ok                             |                                | ?                              |
-|    11 | ok                             | ok                             |                                | Ok                             |
-|    12 | ok                             | ok                             |                                | Ok                             |
+|    10 | ok                             | ok                             |                                | ok                             |
+|    11 | ok                             | ok                             |                                | ok                             |
+|    12 | ok                             | ok                             |                                | ok                             |
 
 ## Batch / Synthetic / Cluster
 
@@ -294,8 +295,3 @@ java -cp integration/java/target/java-integration-all-bundled-0.2.0-incubating-S
   --experiments=enable_custom_pubsub_source
 ```
 
-## Running on Flink
-
-See [BEAM_ON_FLINK_ON_GCP](./BEAM_ON_FLINK_ON_GCP.md) for instructions
-on running a NexMark pipeline using Flink hosted on a Google Compute
-Platform cluster.
