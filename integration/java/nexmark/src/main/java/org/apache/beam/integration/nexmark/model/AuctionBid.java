@@ -27,7 +27,7 @@ import java.io.Serializable;
 
 import org.apache.beam.integration.nexmark.NexmarkUtils;
 import org.apache.beam.integration.nexmark.WinningBids;
-import org.apache.beam.sdk.coders.AtomicCoder;
+import org.apache.beam.sdk.coders.CustomCoder;
 import org.apache.beam.sdk.coders.Coder;
 import org.apache.beam.sdk.coders.CoderException;
 
@@ -35,7 +35,7 @@ import org.apache.beam.sdk.coders.CoderException;
  * Result of {@link WinningBids} transform.
  */
 public class AuctionBid implements KnownSize, Serializable {
-  public static final Coder<AuctionBid> CODER = new AtomicCoder<AuctionBid>() {
+  public static final Coder<AuctionBid> CODER = new CustomCoder<AuctionBid>() {
     @Override
     public void encode(AuctionBid value, OutputStream outStream,
         Coder.Context context)

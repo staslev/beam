@@ -26,7 +26,7 @@ import java.io.OutputStream;
 import java.io.Serializable;
 
 import org.apache.beam.integration.nexmark.NexmarkUtils;
-import org.apache.beam.sdk.coders.AtomicCoder;
+import org.apache.beam.sdk.coders.CustomCoder;
 import org.apache.beam.sdk.coders.Coder;
 import org.apache.beam.sdk.coders.CoderException;
 import org.apache.beam.sdk.coders.VarLongCoder;
@@ -37,7 +37,7 @@ import org.apache.beam.sdk.coders.VarLongCoder;
 public class AuctionPrice implements KnownSize, Serializable {
   private static final Coder<Long> LONG_CODER = VarLongCoder.of();
 
-  public static final Coder<AuctionPrice> CODER = new AtomicCoder<AuctionPrice>() {
+  public static final Coder<AuctionPrice> CODER = new CustomCoder<AuctionPrice>() {
     @Override
     public void encode(AuctionPrice value, OutputStream outStream,
         Coder.Context context)

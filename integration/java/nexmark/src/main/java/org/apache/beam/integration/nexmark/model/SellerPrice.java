@@ -26,7 +26,7 @@ import java.io.OutputStream;
 import java.io.Serializable;
 
 import org.apache.beam.integration.nexmark.NexmarkUtils;
-import org.apache.beam.sdk.coders.AtomicCoder;
+import org.apache.beam.sdk.coders.CustomCoder;
 import org.apache.beam.sdk.coders.Coder;
 import org.apache.beam.sdk.coders.CoderException;
 import org.apache.beam.sdk.coders.VarLongCoder;
@@ -37,7 +37,7 @@ import org.apache.beam.sdk.coders.VarLongCoder;
 public class SellerPrice implements KnownSize, Serializable {
   private static final Coder<Long> LONG_CODER = VarLongCoder.of();
 
-  public static final Coder<SellerPrice> CODER = new AtomicCoder<SellerPrice>() {
+  public static final Coder<SellerPrice> CODER = new CustomCoder<SellerPrice>() {
     @Override
     public void encode(SellerPrice value, OutputStream outStream,
         Coder.Context context)
@@ -54,6 +54,7 @@ public class SellerPrice implements KnownSize, Serializable {
       long price = LONG_CODER.decode(inStream, Context.NESTED);
       return new SellerPrice(seller, price);
     }
+    @Override public void verifyDeterministic() throws NonDeterministicException {}
   };
 
   @JsonProperty
