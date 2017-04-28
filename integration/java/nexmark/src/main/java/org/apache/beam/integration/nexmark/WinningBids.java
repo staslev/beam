@@ -35,9 +35,9 @@ import org.apache.beam.integration.nexmark.model.AuctionBid;
 import org.apache.beam.integration.nexmark.model.Bid;
 import org.apache.beam.integration.nexmark.model.Event;
 import org.apache.beam.integration.nexmark.sources.GeneratorConfig;
-import org.apache.beam.sdk.coders.CustomCoder;
 import org.apache.beam.sdk.coders.Coder;
 import org.apache.beam.sdk.coders.CoderException;
+import org.apache.beam.sdk.coders.CustomCoder;
 import org.apache.beam.sdk.coders.VarIntCoder;
 import org.apache.beam.sdk.coders.VarLongCoder;
 import org.apache.beam.sdk.metrics.Counter;
@@ -169,7 +169,8 @@ public class WinningBids extends PTransform<PCollection<Event>, PCollection<Auct
         throws IOException, CoderException {
       IntervalWindow superWindow = SUPER_CODER.decode(inStream, Coder.Context.NESTED);
       long auction = ID_CODER.decode(inStream, Coder.Context.NESTED);
-      boolean isAuctionWindow = INT_CODER.decode(inStream, Coder.Context.NESTED) == 0 ? false : true;
+      boolean isAuctionWindow =
+          INT_CODER.decode(inStream, Coder.Context.NESTED) == 0 ? false : true;
       return new AuctionOrBidWindow(
           superWindow.start(), superWindow.end(), auction, isAuctionWindow);
     }

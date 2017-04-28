@@ -64,8 +64,7 @@ public enum NexmarkSuite {
         // Scale back so overall runtimes are reasonably close across all queries.
         configuration.numEvents /= 10;
       }
-      if (query != 3)
-        configurations.add(configuration);
+      configurations.add(configuration);
     }
     return configurations;
   }
