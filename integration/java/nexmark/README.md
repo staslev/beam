@@ -191,10 +191,10 @@ Open issues are tracked [here](https://github.com../../../../../issues):
 |     1 | ok                             | ok                             |                                | ok                             |
 |     2 | ok                             | ok                             |                                | ok                             |
 |     3 | ok                             | [#44](../../../../../issues/44)|                                | [#50](../../../../../issues/50)|
-|     4 | ok                             | [#41](../../../../../issues/41)|                                | ok                             |
-|     5 | ok                             | [#42](../../../../../issues/42)|                                | ok                             |
+|     4 | ok                             | ok                             |                                | ok                             |
+|     5 | ok                             | [#52](../../../../../issues/52)|                                | ok                             |
 |     6 | ok                             | ok                             |                                | ok                             |
-|     7 | ok                             | [#43](../../../../../issues/43)|                                | ok                             |
+|     7 | ok                             | [#53](../../../../../issues/53)|                                | ok                             |
 |     8 | ok                             | ok                             |                                | ok                             |
 |     9 | ok                             | ok                             |                                | ok                             |
 |    10 | ok                             | ok                             |                                | ok                             |
