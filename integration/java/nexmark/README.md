@@ -20,8 +20,7 @@
 # NEXMark integration suite
 
 This is a suite of pipelines inspired by the 'continuous data stream'
-queries in [http://datalab.cs.pdx.edu/niagaraST/NEXMark/]
-(http://datalab.cs.pdx.edu/niagaraST/NEXMark/).
+queries in [http://datalab.cs.pdx.edu/niagaraST/NEXMark/](http://datalab.cs.pdx.edu/niagaraST/NEXMark/).
 
 These are multiple queries over a three entities model representing on online auction system:
 
